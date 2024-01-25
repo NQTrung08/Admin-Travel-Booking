@@ -1,23 +1,8 @@
 import "./App.css";
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import MyTable from "./components/Table/Table";
-import SideBar from "./components/SideBar/SideBar";
+import Layout from "./components/Layout/Layout";
 function App() {
-	return (
-		<>
-    <Container>
-      <Row>
-			  <SideBar />
-        
-        <Col lg={9}>
-          <MyTable />
-        </Col>
-          
-      </Row>
-    </Container>
-		</>
-	);
+	return <Layout />;
 }
 
 export default App;
