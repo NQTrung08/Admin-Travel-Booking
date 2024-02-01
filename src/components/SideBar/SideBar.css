@@ -1,4 +1,59 @@
-
 .logo img {
-    width: 30%;
+    width: 100%;
 }
+
+.Sidebar {
+    /* padding: 20px; */
+    /* background: var(--yellow); */
+
+}
+
+.logo {
+    padding: 16px ;
+}
+
+.navigation {}
+
+.menu {
+    list-style: none;
+    padding-left: 0;
+    padding: 16px 0;
+
+}
+
+.menu a {
+    padding: 16px 16px 16px 16px;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+
+}
+
+
+.nav__item {
+    width: 100%;
+    padding:16px 0;
+}
+.nav__item a{
+    position: relative;
+    display: block;
+}
+/* .nav__item:hover{
+    background-color: pink;
+    border-radius: 10px ;
+} */
+.active__link{
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    background-color: pink;
+}
+.active__link::before {
+    content: "";
+    width: 8px;
+    height: 100%;
+    position: absolute;
+    background: var(--pink);
+    margin-right: calc(1rem - 8px);
+    top: 0;
+    left: 0;
+  }
