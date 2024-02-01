@@ -4,17 +4,12 @@ import SideBar from "../SideBar/SideBar.jsx";
 import MyTable from "../Table/Table.jsx";
 const MainDash = () => {
 	return (
-		<div>
-			<Container>
-				<Row>
-					<SideBar />
+		<>
+			<Col lg={9}>
+				<MyTable />
+			</Col>
 
-					<Col lg={9}>
-						<MyTable />
-					</Col>
-				</Row>
-			</Container>
-		</div>
+		</>
 	);
 };
 
