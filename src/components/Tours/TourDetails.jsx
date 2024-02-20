@@ -77,7 +77,7 @@ const TourDetails = () => {
 						</span>
 
 						<span className="tour__address">
-							<i className="ri-map-pin-user-fill"></i> Somewhere
+							<i className="ri-map-pin-user-fill"></i> {address}
 						</span>
 					</div>
 

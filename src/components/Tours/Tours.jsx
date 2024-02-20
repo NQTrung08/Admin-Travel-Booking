@@ -9,8 +9,8 @@ import {
 	ModalBody,
 	ModalFooter,
 } from "reactstrap";
+import "./Tours.css";
 import axios from "axios";
-
 
 const Tours = () => {
 	const [tours, setTours] = useState([]);
@@ -24,9 +24,9 @@ const Tours = () => {
 		maxGroupSize: "",
 		price: "",
 		desc: "",
+		address: "",
 		photo: ""
 	});
-
 
 	useEffect(() => {
 		fetchTour();
@@ -43,17 +43,43 @@ const Tours = () => {
 		}
 	};
 
+
+	//================= HANDLE UPDATE =============
 	const handleUpdate = async (id) => {
 		try {
 			const response = await axios.get(
 				`https://server-travel-booking.onrender.com/tours/${id}`
 			);
+			console.log(response.data);
 			setSelectedTour(response.data);
 			toggleModalUpdate();
 		} catch (error) {
 			console.error("Error fetching tour for update:", error);
 		}
 	};
+
+	const handleUpdateSubmit = async () => {
+		try {
+			await axios.put(
+				`https://server-travel-booking.onrender.com/tours/${selectedTour._id}`,
+				selectedTour
+			);
+			fetchTour();
+			toggleModalUpdate();
+		} catch (error) {
+			console.error("Error updating tour:", error);
+		}
+	};
+
+	const handleUpdateChange = (e, field) => {
+		setSelectedTour({
+			...selectedTour,
+			[field]: e.target.value,
+		});
+	};
+
+ // =============================================================
+
 
 	const handleDelete = async (id) => {
 		try {
@@ -66,6 +92,8 @@ const Tours = () => {
 		}
 	};
 
+
+	//===================== HANDLE MODAL ===============
 	const toggleModalAdd = () => {
 		setModalAdd(!modalAdd);
 	};
@@ -73,6 +101,9 @@ const Tours = () => {
 	const toggleModalUpdate = () => {
 		setModalUpdate(!modalUpdate);
 	};
+
+
+	// ===================== HANDLE ADD TOUR =========================
 
 	const handleChange = (e, field) => {
 		setFormData({
@@ -91,6 +122,7 @@ const Tours = () => {
 			fetchTour();
 			toggleModalAdd();
 			// Reset form data after submit
+			console.log("Tour added successfully!"); // Log khi tour được thêm thành công
 			setFormData({
 				title: "",
 				city: "",
@@ -98,12 +130,15 @@ const Tours = () => {
 				maxGroupSize: "",
 				price: "",
 				desc: "",
+				address: "",
 				photo: ""
 			});
 		} catch (error) {
 			console.error("Error adding tour:", error);
 		}
 	};
+ /// =================================================================
+
 
 	return (
 		<Col lg={9}>
@@ -112,7 +147,7 @@ const Tours = () => {
 				<Button color="primary" onClick={toggleModalAdd}>
 					Add Tour
 				</Button>
-				<Table>
+				<Table className="table__tours">
 					<thead>
 						<tr>
 							<th>Photo</th>
@@ -128,7 +163,9 @@ const Tours = () => {
 					<tbody>
 						{tours.map((tour) => (
 							<tr key={tour._id}>
-								<td><img src={tour.photo} alt="" style={{width:"100px"}} /></td>
+								<td>
+									<img src={tour.photo} alt="" style={{ width: "100px" }} />
+								</td>
 								<td>{tour.title}</td>
 								<td>{tour.city}</td>
 								<td>{tour.distance}</td>
@@ -149,7 +186,6 @@ const Tours = () => {
 								<td>
 									<Link to={`/tours/${tour._id}`}>Detail</Link>
 								</td>
-								
 							</tr>
 						))}
 					</tbody>
@@ -166,7 +202,8 @@ const Tours = () => {
 									<input
 										type="text"
 										className="form-control"
-										defaultValue={selectedTour.title}
+										value={selectedTour.title}
+										onChange={(e) => handleUpdateChange(e, "title")}
 									/>
 								</div>
 								<div className="form-group">
@@ -174,7 +211,17 @@ const Tours = () => {
 									<input
 										type="text"
 										className="form-control"
-										defaultValue={selectedTour.city}
+										value={selectedTour.city}
+										onChange={(e) => handleUpdateChange(e, "city")}
+									/>
+								</div>
+								<div className="form-group">
+									<label>Address</label>
+									<input
+										type="text"
+										className="form-control"
+										value={selectedTour.address}
+										onChange={(e) => handleUpdateChange(e, "address")}
 									/>
 								</div>
 								<div className="form-group">
@@ -182,7 +229,8 @@ const Tours = () => {
 									<input
 										type="number"
 										className="form-control"
-										defaultValue={selectedTour.distance}
+										value={selectedTour.distance}
+										onChange={(e) => handleUpdateChange(e, "distance")}
 									/>
 								</div>
 								<div className="form-group">
@@ -190,7 +238,8 @@ const Tours = () => {
 									<input
 										type="number"
 										className="form-control"
-										defaultValue={selectedTour.maxGroupSize}
+										value={selectedTour.maxGroupSize}
+										onChange={(e) => handleUpdateChange(e, "maxGroupSize")}
 									/>
 								</div>
 								<div className="form-group">
@@ -198,7 +247,8 @@ const Tours = () => {
 									<input
 										type="text"
 										className="form-control"
-										defaultValue={selectedTour.desc}
+										value={selectedTour.desc}
+										onChange={(e) => handleUpdateChange(e, "desc")}
 									/>
 								</div>
 								<div className="form-group">
@@ -206,7 +256,8 @@ const Tours = () => {
 									<input
 										type="number"
 										className="form-control"
-										defaultValue={selectedTour.price}
+										value={selectedTour.price}
+										onChange={(e) => handleUpdateChange(e, "price")}
 									/>
 								</div>
 
@@ -215,14 +266,15 @@ const Tours = () => {
 									<input
 										type="text"
 										className="form-control"
-										defaultValue={selectedTour.photo}
+										value={selectedTour.photo}
+										onChange={(e) => handleUpdateChange(e, "photo")}
 									/>
 								</div>
 							</form>
 						)}
 					</ModalBody>
 					<ModalFooter>
-						<Button color="primary" onClick={toggleModalUpdate}>
+						<Button color="primary" onClick={handleUpdateSubmit}>
 							Update
 						</Button>{" "}
 						<Button color="secondary" onClick={toggleModalUpdate}>
@@ -230,6 +282,7 @@ const Tours = () => {
 						</Button>
 					</ModalFooter>
 				</Modal>
+
 
 				{/* Modal for Add Tour */}
 				<Modal isOpen={modalAdd} toggle={toggleModalAdd}>
@@ -253,6 +306,15 @@ const Tours = () => {
 									className="form-control"
 									value={formData.city}
 									onChange={(e) => handleChange(e, "city")}
+								/>
+							</div>
+							<div className="form-group">
+								<label>Address</label>
+								<input
+									type="text"
+									className="form-control"
+									value={formData.address}
+									onChange={(e) => handleChange(e, "address")}
 								/>
 							</div>
 							<div className="form-group">
@@ -300,7 +362,7 @@ const Tours = () => {
 									onChange={(e) => handleChange(e, "photo")}
 								/>
 							</div>
-							<Button type="submit" color="primary">
+							<Button type="submit" color="primary" onClick={handleSubmit}>
 								Add Tour
 							</Button>{" "}
 						</form>
@@ -311,7 +373,6 @@ const Tours = () => {
 						</Button>
 					</ModalFooter>
 				</Modal>
-
 			</div>
 		</Col>
 	);

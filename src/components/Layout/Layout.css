@@ -5,9 +5,10 @@
         #ffcdf1 51.55%,
         #f3c6f1 90.85%
     );
-    height:100vh ;
+    height:100vh;
     display: flex;
     justify-content:center ;
+
     /* border-radius: 64px; */
     /* align-items: center; */
     /* font-family: sans-serif; */
