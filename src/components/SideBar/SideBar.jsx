@@ -8,18 +8,22 @@ const nav_links = [
 	{
 		path: "/mainDash",
 		display: "MainDash",
+		urlImg: "ri-home-line"
 	},
 	{
 		path: "/customers",
 		display: "Customers",
+		urlImg:"ri-group-line",
 	},
 	{
 		path: "/tours",
 		display: "Tours",
+		urlImg:"ri-map-pin-line",
 	},
 	{
 		path: "/orders",
 		display: "Orders",
+		urlImg:"ri-bookmark-2-line",
 	},
 ];
 
@@ -36,13 +40,16 @@ const SideBar = () => {
 						{nav_links.map((link, index) => {
 							return (
 								<li className="nav__item" key={index}>
+									
 									<NavLink
 										to={link.path}
 										className={(navClass) => {
 											return navClass.isActive ? "active__link" : "";
 										}}
 									>
+										<i className={link.urlImg}></i>
 										{link.display}
+
 									</NavLink>
 								</li>
 							);
