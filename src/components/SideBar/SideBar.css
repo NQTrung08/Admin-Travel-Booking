@@ -33,6 +33,7 @@
 .nav__item {
     width: 100%;
     padding:16px 0;
+    /* display: flex; */
 }
 .nav__item a{
     position: relative;
@@ -42,6 +43,10 @@
     background-color: pink;
     border-radius: 10px ;
 } */
+.nav__item i{
+    font-size: 24px;
+    padding-right: 16px;
+}
 .active__link{
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;

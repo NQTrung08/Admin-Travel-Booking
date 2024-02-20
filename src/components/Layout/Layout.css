@@ -1,4 +1,24 @@
 .layout{
-    background: var(--yellow);
-
+    background: linear-gradient(
+        106.37deg,
+        #ffe1bc 29.63%,
+        #ffcdf1 51.55%,
+        #f3c6f1 90.85%
+    );
+    height:100vh ;
+    display: flex;
+    justify-content:center ;
+    /* border-radius: 64px; */
+    /* align-items: center; */
+    /* font-family: sans-serif; */
+} 
+.layoutGlass{
+    
+    display: grid;
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    background-color: var(--glass);
+    overflow: hidden;
+    grid-template-columns: 11rem auto;
 }

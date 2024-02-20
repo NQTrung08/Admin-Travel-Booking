@@ -23,6 +23,8 @@ const Tours = () => {
 		distance: "",
 		maxGroupSize: "",
 		price: "",
+		desc: "",
+		photo: ""
 	});
 
 
@@ -95,6 +97,8 @@ const Tours = () => {
 				distance: "",
 				maxGroupSize: "",
 				price: "",
+				desc: "",
+				photo: ""
 			});
 		} catch (error) {
 			console.error("Error adding tour:", error);
@@ -111,17 +115,20 @@ const Tours = () => {
 				<Table>
 					<thead>
 						<tr>
+							<th>Photo</th>
 							<th>Title</th>
 							<th>City</th>
 							<th>Distance</th>
-							<th>MaxGroupSize</th>
+							<th>MaxSize</th>
 							<th>Price</th>
 							<th>Action</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						{tours.map((tour) => (
 							<tr key={tour._id}>
+								<td><img src={tour.photo} alt="" style={{width:"100px"}} /></td>
 								<td>{tour.title}</td>
 								<td>{tour.city}</td>
 								<td>{tour.distance}</td>
@@ -142,6 +149,7 @@ const Tours = () => {
 								<td>
 									<Link to={`/tours/${tour._id}`}>Detail</Link>
 								</td>
+								
 							</tr>
 						))}
 					</tbody>
@@ -186,11 +194,28 @@ const Tours = () => {
 									/>
 								</div>
 								<div className="form-group">
+									<label>Description</label>
+									<input
+										type="text"
+										className="form-control"
+										defaultValue={selectedTour.desc}
+									/>
+								</div>
+								<div className="form-group">
 									<label>Price</label>
 									<input
 										type="number"
 										className="form-control"
 										defaultValue={selectedTour.price}
+									/>
+								</div>
+
+								<div className="form-group">
+									<label>Photo</label>
+									<input
+										type="text"
+										className="form-control"
+										defaultValue={selectedTour.photo}
 									/>
 								</div>
 							</form>
@@ -249,12 +274,30 @@ const Tours = () => {
 								/>
 							</div>
 							<div className="form-group">
+								<label>Description</label>
+								<input
+									type="text"
+									className="form-control"
+									value={formData.desc}
+									onChange={(e) => handleChange(e, "desc")}
+								/>
+							</div>
+							<div className="form-group">
 								<label>Price</label>
 								<input
 									type="number"
 									className="form-control"
 									value={formData.price}
 									onChange={(e) => handleChange(e, "price")}
+								/>
+							</div>
+							<div className="form-group">
+								<label>Photo</label>
+								<input
+									type="text"
+									className="form-control"
+									value={formData.photo}
+									onChange={(e) => handleChange(e, "photo")}
 								/>
 							</div>
 							<Button type="submit" color="primary">
