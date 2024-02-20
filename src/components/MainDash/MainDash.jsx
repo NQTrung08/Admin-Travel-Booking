@@ -6,7 +6,7 @@ const MainDash = () => {
 	return (
 		<>
 			<Col lg={9}>
-				<MyTable />
+				<MyTable/>
 			</Col>
 
 		</>

@@ -1,5 +1,5 @@
 .logo img {
-    width: 100%;
+    width: 100px;
 }
 
 .Sidebar {
@@ -9,7 +9,7 @@
 }
 
 .logo {
-    padding: 16px ;
+    padding: 16px;
 }
 
 .navigation {}
