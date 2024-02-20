@@ -5,6 +5,7 @@
         #ffcdf1 51.55%,
         #f3c6f1 90.85%
     );
+    width: 100%;
     height:100vh ;
     display: flex;
     justify-content:center ;

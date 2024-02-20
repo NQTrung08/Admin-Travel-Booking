@@ -3,7 +3,9 @@ import { Col, Row, Container, Form, ListGroup } from "reactstrap";
 import { useParams } from "react-router-dom";
 import './tourDetails.css'
 import axios from "axios";
+import { Link } from 'react-router-dom';
 const TourDetails = () => {
+	
 
     // lấy giá trị id từ URL;
 	const { id } = useParams();
@@ -59,7 +61,9 @@ const TourDetails = () => {
 	return (
 		<Col lg={9}>
 			<div className="tour__content">
-                <h2>Tour Details</h2>
+                <h2><Link to="/tours">
+				<i className="fa ri-arrow-left-circle-fill"></i>
+          </Link> Tour Details</h2>
 				<img src={photo} alt="" />
 
 				<div className="tour__info">

@@ -6,13 +6,15 @@ import "./Layout.css";
 const Layout = () => {
   return (
     <>
-    
-      <Container className="layout">
+      <div className="layout">
+
+      <Container>
         <Row className="layoutGlass">
           <SideBar />
           <Routers />
         </Row>
       </Container>
+      </div>
     </>
   );
 };

@@ -118,5 +118,38 @@
     margin-bottom: 0;
 }
 
+h2 a{
+    text-decoration: none;
+    color: #000;
+}
+.tour__content img{
+    transition: transform 0.3s ease; /* Hiệu ứng phóng to trong 0.3 giây */
+    transform-origin: 50% 50%; /* Đặt trung tâm làm điểm xoay */
+}
 
+.tour__content img:hover {
+    width: 60%;
+    transition: 1s;
+    cursor: pointer;
 
+}
+.tour__extra--details span{
+    background-color: rgb(197, 214, 228);
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+.tour__extra--details span:hover{
+    cursor: pointer;
+}
+.tour__rating i{
+    color: #f6ff00;
+    transform: scale(1.2);
+}
+.tour__address i{
+    color: #9c1d1d;
+}
+.tour__desc{
+    background-color: rgb(197, 214, 228);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
