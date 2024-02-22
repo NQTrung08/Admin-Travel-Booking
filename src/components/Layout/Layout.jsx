@@ -1,20 +1,22 @@
-import React from 'react'
-import Routers from '../../Router/Routers'
+import React from "react";
+import Routers from "../../Router/Routers";
 import { Container, Row, Col } from "reactstrap";
-import SideBar from '../SideBar/SideBar';
+import SideBar from "../SideBar/SideBar";
+import "./Layout.css";
 const Layout = () => {
   return (
     <>
-      <Container className='layout' >
-        <Row>
+      <div className="layout">
+      <Container >
+        <Row className="layoutGlass">
           <SideBar />
           <Routers />
         </Row>
       </Container>
-    
-    </>
-    
-  )
-}
 
-export default Layout
+      </div>
+    </>
+  );
+};
+
+export default Layout;
