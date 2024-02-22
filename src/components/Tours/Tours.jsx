@@ -77,7 +77,7 @@ const Tours = () => {
 		});
 	};
 
-	// =============================================================
+	// ========================= DELETE ===================================
 
 	const handleDelete = async (id) => {
 		try {
@@ -101,14 +101,14 @@ const Tours = () => {
 
 	// ===================== HANDLE ADD TOUR =========================
 
-	const handleChange = (e, field) => {
+	const handleAddChange = (e, field) => {
 		setFormData({
 			...formData,
 			[field]: e.target.value,
 		});
 	};
 
-	const handleSubmit = async (e) => {
+	const handleAddSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			await axios.post(
@@ -289,14 +289,14 @@ const Tours = () => {
 					<ModalHeader toggle={toggleModalAdd}>Add Tour</ModalHeader>
 					<ModalBody>
 						{/* Render form to add new tour */}
-						<form onSubmit={handleSubmit}>
+						<form onSubmit={handleAddSubmit}>
 							<div className="form-group">
 								<label>Title</label>
 								<input
 									type="text"
 									className="form-control"
 									value={formData.title}
-									onChange={(e) => handleChange(e, "title")}
+									onChange={(e) => handleAddChange(e, "title")}
 								/>
 							</div>
 							<div className="form-group">
@@ -305,7 +305,7 @@ const Tours = () => {
 									type="text"
 									className="form-control"
 									value={formData.city}
-									onChange={(e) => handleChange(e, "city")}
+									onChange={(e) => handleAddChange(e, "city")}
 								/>
 							</div>
 							<div className="form-group">
@@ -314,7 +314,7 @@ const Tours = () => {
 									type="text"
 									className="form-control"
 									value={formData.address}
-									onChange={(e) => handleChange(e, "address")}
+									onChange={(e) => handleAddChange(e, "address")}
 								/>
 							</div>
 							<div className="form-group">
@@ -323,7 +323,7 @@ const Tours = () => {
 									type="number"
 									className="form-control"
 									value={formData.distance}
-									onChange={(e) => handleChange(e, "distance")}
+									onChange={(e) => handleAddChange(e, "distance")}
 								/>
 							</div>
 							<div className="form-group">
@@ -332,7 +332,7 @@ const Tours = () => {
 									type="number"
 									className="form-control"
 									value={formData.maxGroupSize}
-									onChange={(e) => handleChange(e, "maxGroupSize")}
+									onChange={(e) => handleAddChange(e, "maxGroupSize")}
 								/>
 							</div>
 							<div className="form-group">
@@ -341,7 +341,7 @@ const Tours = () => {
 									type="text"
 									className="form-control"
 									value={formData.desc}
-									onChange={(e) => handleChange(e, "desc")}
+									onChange={(e) => handleAddChange(e, "desc")}
 								/>
 							</div>
 							<div className="form-group">
@@ -350,7 +350,7 @@ const Tours = () => {
 									type="number"
 									className="form-control"
 									value={formData.price}
-									onChange={(e) => handleChange(e, "price")}
+									onChange={(e) => handleAddChange(e, "price")}
 								/>
 							</div>
 							<div className="form-group">
@@ -359,14 +359,14 @@ const Tours = () => {
 									type="text"
 									className="form-control"
 									value={formData.photo}
-									onChange={(e) => handleChange(e, "photo")}
+									onChange={(e) => handleAddChange(e, "photo")}
 								/>
 							</div>
 							
 						</form>
 					</ModalBody>
 					<ModalFooter>
-					<Button type="submit" color="primary" onClick={handleSubmit}>
+					<Button type="submit" color="primary" onClick={handleAddSubmit}>
 								Add Tour
 							</Button>{" "}
 						<Button color="secondary" onClick={toggleModalAdd}>
