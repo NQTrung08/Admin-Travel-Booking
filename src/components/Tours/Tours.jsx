@@ -25,7 +25,7 @@ const Tours = () => {
 		price: "",
 		desc: "",
 		address: "",
-		photo: ""
+		photo: "",
 	});
 
 	useEffect(() => {
@@ -42,7 +42,6 @@ const Tours = () => {
 			console.error("Error fetching tours:", error);
 		}
 	};
-
 
 	//================= HANDLE UPDATE =============
 	const handleUpdate = async (id) => {
@@ -78,8 +77,7 @@ const Tours = () => {
 		});
 	};
 
- // =============================================================
-
+	// =============================================================
 
 	const handleDelete = async (id) => {
 		try {
@@ -92,7 +90,6 @@ const Tours = () => {
 		}
 	};
 
-
 	//===================== HANDLE MODAL ===============
 	const toggleModalAdd = () => {
 		setModalAdd(!modalAdd);
@@ -101,7 +98,6 @@ const Tours = () => {
 	const toggleModalUpdate = () => {
 		setModalUpdate(!modalUpdate);
 	};
-
 
 	// ===================== HANDLE ADD TOUR =========================
 
@@ -131,65 +127,70 @@ const Tours = () => {
 				price: "",
 				desc: "",
 				address: "",
-				photo: ""
+				photo: "",
 			});
 		} catch (error) {
 			console.error("Error adding tour:", error);
 		}
 	};
- /// =================================================================
-
+	/// =================================================================
 
 	return (
 		<Col lg={9}>
-			<div className="table">
+			<div className="tours__content">
 				<h3>Tours</h3>
-				<Button color="primary" onClick={toggleModalAdd}>
-					Add Tour
-				</Button>
-				<Table className="table__tours">
-					<thead>
-						<tr>
-							<th>Photo</th>
-							<th>Title</th>
-							<th>City</th>
-							<th>Distance</th>
-							<th>MaxSize</th>
-							<th>Price</th>
-							<th>Action</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						{tours.map((tour) => (
-							<tr key={tour._id}>
-								<td>
-									<img src={tour.photo} alt="" style={{ width: "100px" }} />
-								</td>
-								<td>{tour.title}</td>
-								<td>{tour.city}</td>
-								<td>{tour.distance}</td>
-								<td>{tour.maxGroupSize}</td>
-								<td>{tour.price}</td>
-								<td>
-									<Button
-										color="warning"
-										onClick={() => handleUpdate(tour._id)}
-									>
-										Update
-									</Button>
-									-
-									<Button color="danger" onClick={() => handleDelete(tour._id)}>
-										Delete
-									</Button>
-								</td>
-								<td>
-									<Link to={`/tours/${tour._id}`}>Detail</Link>
-								</td>
+				<div className="btn__tour--add">
+					<Button color="primary" onClick={toggleModalAdd}>
+						<i className="ri-add-line"></i>
+					</Button>
+				</div>
+				<div className="table__outer--scroll">
+					<Table striped>
+						<thead>
+							<tr>
+								<th>Photo</th>
+								<th>Title</th>
+								<th>City</th>
+								<th>Distance</th>
+								<th>MaxSize</th>
+								<th>Price</th>
+								<th>Action</th>
+								<th></th>
 							</tr>
-						))}
-					</tbody>
-				</Table>
+						</thead>
+						<tbody>
+							{tours.map((tour) => (
+								<tr key={tour._id}>
+									<td>
+										<img src={tour.photo} alt="" style={{ width: "100px" }} />
+									</td>
+									<td>{tour.title}</td>
+									<td>{tour.city}</td>
+									<td>{tour.distance}</td>
+									<td>{tour.maxGroupSize}</td>
+									<td>{tour.price}</td>
+									<td>
+										<Button
+											color="btn btn-success"
+											onClick={() => handleUpdate(tour._id)}
+										>
+											<i className="ri-pencil-fill"></i>
+										</Button>{" "}
+										<Button
+											color="btn btn-danger"
+											onClick={() => handleDelete(tour._id)}
+										>
+											<i className="ri-delete-bin-6-line"></i>
+										</Button>
+									</td>
+									<td>
+										<Link to={`/tours/${tour._id}`}>Detail</Link>
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</Table>
+				</div>
 				{/* Modal for Update Tour */}
 				<Modal isOpen={modalUpdate} toggle={toggleModalUpdate}>
 					<ModalHeader toggle={toggleModalUpdate}>Update Tour</ModalHeader>
@@ -283,7 +284,6 @@ const Tours = () => {
 					</ModalFooter>
 				</Modal>
 
-
 				{/* Modal for Add Tour */}
 				<Modal isOpen={modalAdd} toggle={toggleModalAdd}>
 					<ModalHeader toggle={toggleModalAdd}>Add Tour</ModalHeader>
@@ -362,12 +362,13 @@ const Tours = () => {
 									onChange={(e) => handleChange(e, "photo")}
 								/>
 							</div>
-							<Button type="submit" color="primary" onClick={handleSubmit}>
-								Add Tour
-							</Button>{" "}
+							
 						</form>
 					</ModalBody>
 					<ModalFooter>
+					<Button type="submit" color="primary" onClick={handleSubmit}>
+								Add Tour
+							</Button>{" "}
 						<Button color="secondary" onClick={toggleModalAdd}>
 							Cancel
 						</Button>

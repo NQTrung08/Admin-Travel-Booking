@@ -1,17 +1,16 @@
-import React, {useState, useEffect, useRef} from "react";
-import { Col, Row, Container, Form, ListGroup } from "reactstrap";
+import React, { useState, useEffect, useRef } from "react";
+import { Col, Row, Container, Form, ListGroup, Button } from "reactstrap";
 import { useParams } from "react-router-dom";
-import './tourDetails.css'
+import "./tourDetails.css";
 import axios from "axios";
 const TourDetails = () => {
-
-    // lấy giá trị id từ URL;
+	// lấy giá trị id từ URL;
 	const { id } = useParams();
 
 	//// Khởi tạo reviewMsgRef với giá trị là chuỗi rỗng
 	const reviewMsgRef = useRef("");
 	const [tourRating, setTourRating] = useState(null);
-    const [tour, setTours] = useState([]);
+	const [tour, setTours] = useState([]);
 
 	useEffect(() => {
 		fetchTour();
@@ -27,8 +26,8 @@ const TourDetails = () => {
 			console.error("Error fetching tours:", error);
 		}
 	};
-  console.log(tour);
-  
+	console.log(tour);
+
 	const {
 		photo,
 		title,
@@ -56,10 +55,19 @@ const TourDetails = () => {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, [tour]);
+
+	const handleGoBack = () => {
+		window.history.back(); // Quay lại trang trước trong lịch sử duyệt
+	  };
 	return (
 		<Col lg={9}>
 			<div className="tour__content">
-                <h2>Tour Details</h2>
+				<div className="heading__tours d-flex align-items-center gap-3">
+					<div className="btn--back" onClick={handleGoBack}>
+						<i class="fa ri-arrow-left-circle-fill"></i>
+					</div>
+					<h2>Tour Details</h2>
+				</div>
 				<img src={photo} alt="" />
 
 				<div className="tour__info">
@@ -106,7 +114,6 @@ const TourDetails = () => {
 
 				<div className="tour__reviews mt-4">
 					<h4>Reviews ({reviews?.length} reviews)</h4>
-	
 				</div>
 			</div>
 		</Col>

@@ -1,4 +1,10 @@
 
+.btn--back {
+    cursor: pointer;
+}
+.heading__tours i {
+    font-size: 2rem;
+}
 .tour__content img{
     width: 400px;
     border-radius: 8px;
