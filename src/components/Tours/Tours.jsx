@@ -45,7 +45,7 @@ const Tours = () => {
   const handleUpdate = async (id) => {
     try {
       const response = await axios.get(
-        `https://server-travel-booking.onrender.com/tours/${id}`
+        `https://server-travel-booking.onrender.com/users/update/${id}`
       );
       setSelectedTour(response.data);
       toggleModalUpdate();
@@ -57,7 +57,7 @@ const Tours = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://server-travel-booking.onrender.com/tours/${id}`
+        `https://server-travel-booking.onrender.com/users/delete/${id}`
       );
       fetchTour();
     } catch (error) {
