@@ -7,13 +7,12 @@ const Layout = () => {
   return (
     <>
       <div className="layout">
-
-      <Container>
-        <Row className="layoutGlass">
-          <SideBar />
-          <Routers />
-        </Row>
-      </Container>
+        <Container>
+          <Row className="layoutGlass">
+            <SideBar />
+            <Routers />
+          </Row>
+        </Container>
       </div>
     </>
   );

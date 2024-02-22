@@ -1,8 +1,12 @@
 import React from 'react'
+import { Col } from 'reactstrap'
 
 const Order = () => {
   return (
-    <div>Order</div>
+    <Col lg={9}>
+      <div>Order</div>
+
+    </Col>
   )
 }
 
