@@ -58,7 +58,7 @@ const TourDetails = () => {
 
 	const handleGoBack = () => {
 		window.history.back(); // Quay lại trang trước trong lịch sử duyệt
-	  };
+	};
 	return (
 		<Col lg={9}>
 			<div className="tour__content">
